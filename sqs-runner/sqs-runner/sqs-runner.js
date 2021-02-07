@@ -2,19 +2,34 @@
 // const url = 'http://checkip.amazonaws.com/';
 let response;
 
-/**
- *
- * Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
- * @param {Object} event - API Gateway Lambda Proxy Input Format
- *
- * Context doc: https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html 
- * @param {Object} context
- *
- * Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
- * @returns {Object} object - API Gateway Lambda Proxy Output Format
- * 
- */
+class Runner {
+    constructor(event) {
+        this.event = event;
+        this.conf = this.getConf()
+    }
+
+    getConf() {
+        const conf = {};
+
+        ['AWS_REGION','AWS_ACCESS_KEY','AWS_SECRET_ACCESS_KEY'].forEach(key => {
+            conf[key] = process.env[key]
+        })
+        return conf;
+    }
+
+    start() {
+        console.log(`AWS_REGION=${this.conf['AWS_REGION']}`);
+        console.log(`AWS_ACCESS_KEY=${this.conf['AWS_ACCESS_KEY']}`);
+        console.log(`AWS_SECRET_ACCESS_KEY=${this.conf['AWS_SECRET_ACCESS_KEY']}`); 
+    }
+}
+
+
 exports.lambdaHandler = async (event, context) => {
+
+    const runner = new Runner(event);
+    runner.start();
+
     try {
         // const ret = await axios(url);
         response = {
