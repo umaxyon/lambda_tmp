@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  WorkerStateTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: "sc_worker_state"
+      AttributeDefinitions:
+        - AttributeName: "key"
+          AttributeType: "S"
+        - AttributeName: "row"
+          AttributeType: "N"
+      KeySchema:
+        - AttributeName: "key"
+          KeyType: "HASH"
+        - AttributeName: "row"
+          KeyType: "RANGE"
+      ProvisionedThroughput:
+        ReadCapacityUnits: "2"
+        WriteCapacityUnits: "2"
+
+  RunnerStateTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: "sc_runner_state"
+      AttributeDefinitions:
+        - AttributeName: "key"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "key"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: "2"
+        WriteCapacityUnits: "1"
