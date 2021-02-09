@@ -1,6 +1,21 @@
 {
     "configurations": [
         {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Tests",
+            "program": "${workspaceFolder}/sqs-runner/sqs-runner/node_modules/mocha/bin/_mocha",
+            "args": [
+                "-u",
+                "bdd",
+                "--timeout",
+                "999999",
+                "--colors",
+                "${workspaceFolder}/sqs-runner/sqs-runner/tests/unit"
+            ],
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
             "name": "dynamo-makeTable",
             "program": "${workspaceFolder}/dynamo/makeTable.js",
             "request": "launch",
