@@ -15,8 +15,8 @@ Resources:
         - AttributeName: "row"
           KeyType: "RANGE"
       ProvisionedThroughput:
-        ReadCapacityUnits: "2"
-        WriteCapacityUnits: "2"
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 2
 
   RunnerStateTable:
     Type: AWS::DynamoDB::Table
@@ -29,5 +29,5 @@ Resources:
         - AttributeName: "key"
           KeyType: "HASH"
       ProvisionedThroughput:
-        ReadCapacityUnits: "2"
-        WriteCapacityUnits: "1"
+        ReadCapacityUnits: 2
+        WriteCapacityUnits: 1

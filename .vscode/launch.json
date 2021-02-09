@@ -1,6 +1,18 @@
 {
     "configurations": [
         {
+            "name": "dynamo-makeTable",
+            "program": "${workspaceFolder}/dynamo/makeTable.js",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "args": [
+                "cloudformation_dynamodb.yaml"
+            ]
+        },
+        {
             "type": "aws-sam",
             "request": "direct-invoke",
             "name": "sqs-runner:HelloWorldFunction (nodejs14.x)",
