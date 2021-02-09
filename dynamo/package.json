@@ -6,7 +6,8 @@
   "scripts": {
     "db_run": "java -Djava.library.path=./local/DynamoDBLocal_lib -jar ./local/DynamoDBLocal.jar -sharedDb",
     "list_table": "aws dynamodb list-tables --endpoint-url http://localhost:8000",
-    "make_table": "node makeTable.js cloudformation_dynamodb.yaml"
+    "make_table": "node makeTable.js cloudformation_dynamodb.yaml",
+    "init_table": "aws dynamodb batch-write-item --request-items file://init_data_sc_runner_state.json --endpoint-url http://localhost:8000"
   },
   "author": "",
   "license": "ISC",

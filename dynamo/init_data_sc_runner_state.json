@@ -1,0 +1,12 @@
+{
+    "sc_runner_state": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "key": {"S": "system"},
+                    "available": {"S": "true"}
+                }
+            }
+        }
+    ]
+}
